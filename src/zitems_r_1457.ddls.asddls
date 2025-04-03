@@ -17,8 +17,8 @@ define  view entity ZITEMS_R_1457
   key id_header   as IdHeader,
       name        as Name,
       description as Description,
-      releasedate as ReleaseDate,
-      discdate    as DiscDate,
+      release_date as ReleaseDate,
+      disc_date    as DiscDate,
       price       as Price,
       @Semantics.quantity.unitOfMeasure : 'unit'
       height      as Height,
@@ -27,5 +27,7 @@ define  view entity ZITEMS_R_1457
       depth       as Depth,
       quantity    as Quantity,
       unit        as Unit,
+      @Semantics.systemDateTime.localInstanceLastChangedAt: true
+      local_last_change_at as LocalLastChangeAt,      
       _Header
 }
