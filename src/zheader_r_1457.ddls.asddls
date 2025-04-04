@@ -11,7 +11,8 @@ define root view entity ZHEADER_R_1457
   as select from zheader_1457
 
   composition [0..*] of ZITEMS_R_1457 as _Items
-
+  
+  association [0..1] to I_CountryVH     as _Country on $projection.Country = _Country.Country
 {
   key id               as Id,
       email            as Email,
@@ -24,7 +25,7 @@ define root view entity ZHEADER_R_1457
       image_url        as ImageUrl,
       @Semantics.user.createdBy: true
       local_created_by as LocalCreatedBy,
-      @Semantics.systemDateTime.createdAt: true
-      local_created_at as LocalCreatedAt,
-      _Items
+      system_date      as SystemDate,
+      _Items,
+      _Country
 }

@@ -11,7 +11,7 @@ define  view entity ZITEMS_R_1457
   as select from zitems_1457
   
   association to parent ZHEADER_R_1457 as _Header on $projection.IdHeader = _Header.Id
-  
+  association [1..1] to I_UnitOfMeasure       as _UnitOfMeasure on $projection.Unit = _UnitOfMeasure.UnitOfMeasure
 {
   key id          as Id,
   key id_header   as IdHeader,
@@ -29,5 +29,6 @@ define  view entity ZITEMS_R_1457
       unit        as Unit,
       @Semantics.systemDateTime.localInstanceLastChangedAt: true
       local_last_change_at as LocalLastChangeAt,      
-      _Header
+      _Header,
+      _UnitOfMeasure
 }
