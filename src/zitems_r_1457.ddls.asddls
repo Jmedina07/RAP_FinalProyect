@@ -27,8 +27,11 @@ define  view entity ZITEMS_R_1457
       depth       as Depth,
       quantity    as Quantity,
       unit        as Unit,
+            //local Etag
       @Semantics.systemDateTime.localInstanceLastChangedAt: true
-      local_last_change_at as LocalLastChangeAt,      
+      local_last_changed_at as LocalLastChangedAt,
+
+
       _Header,
       _UnitOfMeasure
 }

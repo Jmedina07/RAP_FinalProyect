@@ -26,6 +26,11 @@ define root view entity ZHEADER_R_1457
       @Semantics.user.createdBy: true
       local_created_by as LocalCreatedBy,
       system_date      as SystemDate,
+      //Local Etag
+      @Semantics.systemDateTime.lastChangedAt: true
+      last_changed_at  as LastChangedAt,
+      @Semantics.systemDateTime.localInstanceLastChangedAt: true
+      local_last_changed_at as LocalLastChangedAt,
       _Items,
       _Country
 }

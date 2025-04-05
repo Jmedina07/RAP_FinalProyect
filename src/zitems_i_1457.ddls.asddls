@@ -11,15 +11,15 @@ define view entity ZITEMS_I_1457
       ReleaseDate,
       DiscDate,
       Price,
-      @Semantics.quantity.unitOfMeasure : 'Unit'
+      @Semantics.quantity.unitOfMeasure : 'unit'
       Height,
-      @Semantics.quantity.unitOfMeasure : 'Unit'
+      @Semantics.quantity.unitOfMeasure : 'unit'
       Width,
       Depth,
       Quantity,
       Unit,
       @Semantics.systemDateTime.localInstanceLastChangedAt: true
-      LocalLastChangeAt,
+      LocalLastChangedAt,
       /* Associations */
       _Header : redirected to parent ZHEADER_I_1457,
       _UnitOfMeasure

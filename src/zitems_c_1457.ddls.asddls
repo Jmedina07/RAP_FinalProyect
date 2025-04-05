@@ -1,10 +1,6 @@
 @AccessControl.authorizationCheck: #NOT_REQUIRED
 @EndUserText.label: 'Items - Consumption Entity'
 @Metadata.ignorePropagatedAnnotations: true
-
-@Metadata.allowExtensions: true
-@Search.searchable: true
-
 define view entity ZITEMS_C_1457
   as projection on ZITEMS_R_1457
 {
@@ -15,9 +11,9 @@ define view entity ZITEMS_C_1457
       ReleaseDate,
       DiscDate,
       Price,
-      @Semantics.quantity.unitOfMeasure : 'Unit'
+      @Semantics.quantity.unitOfMeasure : 'unit'
       Height,
-      @Semantics.quantity.unitOfMeasure : 'Unit'
+      @Semantics.quantity.unitOfMeasure : 'unit'
       Width,
       Depth,
       Quantity,
@@ -26,15 +22,18 @@ define view entity ZITEMS_C_1457
       @Consumption.valueHelpDefinition: [ {
       entity: {
       name: 'I_UnitOfMeasureStdVH',
-      element: 'Unit'
+      element: 'UnitOfMeasure'
       },
       useForValidation: true
       }]
       Unit,
-      _UnitOfMeasure._Text[ 1: Language = $session.system_language ].UnitOfMeasureName as UnitName,
+      _UnitOfMeasure._Text.UnitOfMeasureName as UnitName : localized,      
       @Semantics.systemDateTime.localInstanceLastChangedAt: true
-      LocalLastChangeAt,
+      LocalLastChangedAt,
       /* Associations */
       _Header : redirected to parent ZHEADER_C_1457,
       _UnitOfMeasure
+      
+      
+      
 }

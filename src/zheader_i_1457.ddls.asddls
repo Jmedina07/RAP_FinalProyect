@@ -17,6 +17,10 @@ define root view entity ZHEADER_I_1457
       @Semantics.user.createdBy: true
       LocalCreatedBy,
       SystemDate,
+      @Semantics.systemDateTime.lastChangedAt: true
+      LastChangedAt,
+      @Semantics.systemDateTime.localInstanceLastChangedAt: true
+      LocalLastChangedAt,      
       /* Associations */
       _Items : redirected to composition child ZITEMS_I_1457,
       _Country
