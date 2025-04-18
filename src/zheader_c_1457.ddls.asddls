@@ -29,7 +29,13 @@ define root view entity ZHEADER_C_1457
       
       CreateOn,
       DeliveryDate,
+      @ObjectModel.text.element: [ 'OrderStatusText' ]
+      @Consumption.valueHelpDefinition: [{ entity: {
+          name: '/DMO/I_Overall_Status_VH',
+          element: 'OverallStatus'},
+          useForValidation: true }]      
       OrderStatus,
+      _OrderStatus._Text.Text as OrderStatusText : localized,
       ImageUrl,
       @Semantics.user.createdBy: true
       LocalCreatedBy,

@@ -20,8 +20,9 @@ define root view entity ZHEADER_I_1457
       @Semantics.systemDateTime.lastChangedAt: true
       LastChangedAt,
       @Semantics.systemDateTime.localInstanceLastChangedAt: true
-      LocalLastChangedAt,      
+      LocalLastChangedAt,
       /* Associations */
       _Items : redirected to composition child ZITEMS_I_1457,
-      _Country
+      _Country,
+      _OrderStatus
 }

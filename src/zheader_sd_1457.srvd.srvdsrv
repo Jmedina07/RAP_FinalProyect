@@ -1,0 +1,5 @@
+@EndUserText.label: 'Header'
+define service ZHEADER_SD_1457 {
+  expose ZHEADER_C_1457 as Header;
+  expose ZITEMS_C_1457  as Items;
+}

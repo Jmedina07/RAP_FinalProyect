@@ -1,0 +1,112 @@
+@Metadata.layer: #CORE
+
+@UI: { headerInfo: {
+    typeName: 'Header',
+    typeNamePlural: 'Headers',
+    title: {
+        type: #STANDARD,
+        label: 'Header',
+        value: 'Id'
+    } },
+    presentationVariant: [{ sortOrder: [{ by: 'Id',
+                                          direction: #DESC }],
+                            visualizations: [{ type: #AS_LINEITEM }]
+                         }]
+
+}
+
+annotate entity ZHEADER_C_1457 with
+{
+  @UI.facet: [{ id: 'Header',
+                purpose: #STANDARD,
+                type: #IDENTIFICATION_REFERENCE,
+                label: 'Header',
+                position: 10  },
+
+                { id: 'Items',
+                purpose: #STANDARD,
+                type: #LINEITEM_REFERENCE,
+                label: 'Items',
+                position: 20,
+                targetElement: '_Items'  }
+             ]
+//  @UI: {
+//      lineItem        : [{ position: 1, importance: #HIGH }],
+//      identification  : [{ position: 1, label: 'Order ID' }]}             
+  Id;
+    @UI: { lineItem: [{ position: 10, importance: #HIGH },
+                    { type: #FOR_ACTION,
+                      dataAction: 'acceptSale',
+                      label: 'Accept Travel' },
+                    { type: #FOR_ACTION,
+                      dataAction: 'rejectSale',
+                      label: 'Reject Travel' }
+                   ],
+         identification: [{ position: 10, label: 'Email' },
+                    { type: #FOR_ACTION,
+                              dataAction: 'acceptSale',
+                              label: 'Accept Sale' },
+                            { type: #FOR_ACTION,
+                              dataAction: 'rejectSale',
+                              label: 'Reject Sale' }
+         ],
+         selectionField: [{ position: 10  }]
+  }
+  
+  Email;
+    @UI: {
+      lineItem: [{ position: 20, importance: #HIGH }],
+      identification: [{ position: 20 }]
+  }
+  FirstName;
+  @UI: {
+      lineItem: [{ position: 30, importance: #HIGH }],
+      identification: [{ position: 30 }]
+  }  
+  LastName;
+  @UI: {
+  lineItem: [{ position: 40, importance: #MEDIUM }],
+  identification: [{ position: 40, label: 'Country' }],
+  selectionField: [{ position: 40 }],
+  textArrangement: #TEXT_ONLY
+  }  
+  Country;
+  @UI.hidden: true
+  CountryName;
+  @UI: {
+      lineItem: [{ position: 50, importance: #HIGH }],
+      identification: [{ position: 50 }]
+  }   
+  CreateOn;
+    @UI: {
+      lineItem: [{ position: 60, importance: #HIGH }],
+      identification: [{ position: 60 }]
+  } 
+  DeliveryDate;
+  @UI: {
+  lineItem: [{ position: 70, importance: #MEDIUM }],
+  identification: [{ position: 70, label: 'Status' }],
+  selectionField: [{ position: 70 }],
+  textArrangement: #TEXT_ONLY
+  }    
+  OrderStatus;
+  @UI.hidden: true
+  OrderStatusText;
+   @UI: {
+      lineItem: [{ position: 80, importance: #HIGH }],
+      identification: [{ position: 80 }]
+  } 
+  ImageUrl;
+  @UI.hidden: true
+  LocalCreatedBy;
+  @UI.hidden: true
+  SystemDate;
+  @UI.hidden: true
+  LastChangedAt;
+  @UI.hidden: true
+  LocalLastChangedAt;
+  /* Associations */
+//  _Country;
+//  _Items;
+
+}

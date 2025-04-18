@@ -13,6 +13,7 @@ define root view entity ZHEADER_R_1457
   composition [0..*] of ZITEMS_R_1457 as _Items
   
   association [0..1] to I_CountryVH     as _Country on $projection.Country = _Country.Country
+  association [1..1] to /DMO/I_Overall_Status_VH as _OrderStatus on $projection.OrderStatus = _OrderStatus.OverallStatus
 {
   key id               as Id,
       email            as Email,
@@ -32,5 +33,6 @@ define root view entity ZHEADER_R_1457
       @Semantics.systemDateTime.localInstanceLastChangedAt: true
       local_last_changed_at as LocalLastChangedAt,
       _Items,
-      _Country
+      _Country,
+      _OrderStatus
 }

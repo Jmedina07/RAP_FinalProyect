@@ -1,6 +1,10 @@
 @AccessControl.authorizationCheck: #NOT_REQUIRED
 @EndUserText.label: 'Items - Consumption Entity'
 @Metadata.ignorePropagatedAnnotations: true
+
+@Metadata.allowExtensions: true
+@Search.searchable: true
+
 define view entity ZITEMS_C_1457
   as projection on ZITEMS_R_1457
 {
