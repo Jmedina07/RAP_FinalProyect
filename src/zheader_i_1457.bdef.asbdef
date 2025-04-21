@@ -9,6 +9,7 @@ define behavior for ZHEADER_I_1457 alias Header
 
   use action acceptSale;
   use action rejectSale;
+  use action validationFirstName;
   use action validateEmailFormat;
   use action validateCountryId;
 

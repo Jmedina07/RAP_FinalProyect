@@ -22,7 +22,8 @@ define root view entity ZHEADER_C_1457
             name: 'I_CountryVH',
             element: 'Country'
         }
-        //useForValidation: true
+//        ,
+//        useForValidation: true
       }]      
       Country,
       _Country.Description as CountryName,

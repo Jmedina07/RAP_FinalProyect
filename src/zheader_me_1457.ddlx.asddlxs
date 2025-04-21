@@ -30,9 +30,9 @@ annotate entity ZHEADER_C_1457 with
                 position: 20,
                 targetElement: '_Items'  }
              ]
-//  @UI: {
-//      lineItem        : [{ position: 1, importance: #HIGH }],
-//      identification  : [{ position: 1, label: 'Order ID' }]}             
+  @UI: {
+      lineItem        : [{ position: 1, importance: #HIGH }],
+      identification  : [{ position: 1, label: 'Order ID' }]}             
   Id;
     @UI: { lineItem: [{ position: 10, importance: #HIGH },
                     { type: #FOR_ACTION,

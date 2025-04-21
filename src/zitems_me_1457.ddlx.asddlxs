@@ -20,58 +20,62 @@ annotate entity ZITEMS_C_1457 with
                 position: 10 }
 
       ]
-  @UI.hidden: true
+
+  @UI: {
+      lineItem: [{ position: 10, importance: #HIGH }],
+      identification: [{ position: 10 }]
+  }  
   Id;
   @UI.hidden: true
   IdHeader;
   @UI: {
-      lineItem: [{ position: 10, importance: #HIGH }],
-      identification: [{ position: 10 }]
-  }
-  Name;
-  @UI: {
       lineItem: [{ position: 20, importance: #HIGH }],
       identification: [{ position: 20 }]
   }
-  Description;
+  Name;
   @UI: {
       lineItem: [{ position: 30, importance: #HIGH }],
       identification: [{ position: 30 }]
   }
-  ReleaseDate;
+  Description;
   @UI: {
       lineItem: [{ position: 40, importance: #HIGH }],
       identification: [{ position: 40 }]
-  }  
-  DiscDate;
+  }
+  ReleaseDate;
   @UI: {
       lineItem: [{ position: 50, importance: #HIGH }],
       identification: [{ position: 50 }]
   }  
-  Price;
+  DiscDate;
   @UI: {
       lineItem: [{ position: 60, importance: #HIGH }],
       identification: [{ position: 60 }]
   }  
-  Height;
+  Price;
   @UI: {
       lineItem: [{ position: 70, importance: #HIGH }],
       identification: [{ position: 70 }]
   }  
-  Width;
+  Height;
   @UI: {
       lineItem: [{ position: 80, importance: #HIGH }],
       identification: [{ position: 80 }]
   }  
-  Depth;
+  Width;
   @UI: {
       lineItem: [{ position: 90, importance: #HIGH }],
       identification: [{ position: 90 }]
   }  
+  Depth;
+  @UI: {
+      lineItem: [{ position: 100, importance: #HIGH }],
+      identification: [{ position: 100 }]
+  }  
   Quantity;
   @UI: {
-  lineItem: [{ position: 100, importance: #HIGH }],
-  identification: [{ position: 100 }],
+  lineItem: [{ position: 110, importance: #HIGH }],
+  identification: [{ position: 110 }],
   textArrangement: #TEXT_ONLY
   }   
   Unit;

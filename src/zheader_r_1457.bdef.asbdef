@@ -33,16 +33,21 @@ etag master LocalLastChangedAt
   action ( features : instance, authorization : update ) rejectSale result [1] $self;
 
   //Validations
+  validation validateFirstName on save { create; field FirstName; }
   validation validateEmail on save { create; field Email; }
   validation validateCountry on save { create; field Country; }
 
+  determine action validationFirstName { validation validateFirstName; }
   determine action validateEmailFormat { validation validateEmail; }
   determine action validateCountryId { validation validateCountry; }
 
+
   side effects
   {
+    determine action validationFirstName executed on field FirstName affects messages;
     determine action validateEmailFormat executed on field Email affects messages;
     determine action validateCountryId executed on field Country affects messages;
+
   }
   //
   draft action Edit;
@@ -51,6 +56,7 @@ etag master LocalLastChangedAt
   draft action Resume with additional implementation;
   draft determine action Prepare
   {
+    validation validateFirstName;
     validation validateEmail;
     validation validateCountry;
   }
