@@ -45,6 +45,8 @@ CLASS lhc_Header DEFINITION INHERITING FROM cl_abap_behavior_handler.
       IMPORTING keys FOR Header~validateEmail.
     METHODS validateFirstName FOR VALIDATE ON SAVE
       IMPORTING keys FOR Header~validateFirstName.
+    METHODS validatelastName FOR VALIDATE ON SAVE
+      IMPORTING keys FOR Header~validatelastName.
 
     METHODS validate_email
       IMPORTING
@@ -137,10 +139,9 @@ CLASS lhc_Header IMPLEMENTATION.
 
   METHOD validateCountry.
 
-
-
-
     DATA countries TYPE SORTED TABLE OF I_CountryVH WITH UNIQUE KEY country.
+
+*    DELETE reported-header WHERE %state_area EQ 'VALIDATE_COUNTRY'.
 
     READ ENTITIES OF zheader_r_1457 IN LOCAL MODE
        ENTITY Header
@@ -171,13 +172,16 @@ CLASS lhc_Header IMPLEMENTATION.
 
         APPEND VALUE #( %tky          = header-%tky ) TO failed-header.
 
-        APPEND VALUE #( %tky            = header-%tky
-                         %state_area    = 'VALIDATE_COUNTRY'
-                        %msg = new_message_with_text( severity =
-                                if_abap_behv_message=>severity-error
-                                text = 'Enter Country ' && ' ' && header-Country
-                                )
-                      ) TO reported-header.
+        APPEND VALUE #( %tky = header-%tky
+                  %element-Country = if_abap_behv=>mk-on
+                  %state_area = 'VALIDATE_COUNTRY'
+                  %msg =  new_message(
+                           id       = 'E'
+                           number   = 003
+                           severity = if_abap_behv_message=>severity-error
+                           v1       = 'Country Obligatorio'
+                         ) )
+         TO reported-header.
 
 
 
@@ -185,13 +189,16 @@ CLASS lhc_Header IMPLEMENTATION.
 
         APPEND VALUE #( %tky          = header-%tky ) TO failed-header.
 
-        APPEND VALUE #( %tky            = header-%tky
-                         %state_area    = 'VALIDATE_COUNTRY'
-                        %msg = new_message_with_text( severity =
-                                if_abap_behv_message=>severity-error
-                                text = 'Country desconocida ' && ' ' && header-Country
-                                )
-                      ) TO reported-header.
+        APPEND VALUE #( %tky = header-%tky
+                  %element-Country = if_abap_behv=>mk-on
+                  %state_area = 'VALIDATE_COUNTRY'
+                  %msg =  new_message(
+                           id       = 'E'
+                           number   = 003
+                           severity = if_abap_behv_message=>severity-error
+                           v1       = 'Country desconocida ' && ' ' && header-Country
+                         ) )
+         TO reported-header.
 
 
       ENDIF.
@@ -220,6 +227,8 @@ CLASS lhc_Header IMPLEMENTATION.
 
       LOOP AT headers INTO DATA(header).
 
+        APPEND VALUE #( %tky          = header-%tky
+                         %state_area = 'VALIDATE_EMAIL' ) TO reported-header.
         IF header-Email IS NOT INITIAL.
 
           lv_email = header-Email.
@@ -227,16 +236,17 @@ CLASS lhc_Header IMPLEMENTATION.
           lv_is_valid = validate_email( i_email = lv_email ).
 
         ELSE.
-
           APPEND VALUE #( %tky          = header-%tky ) TO failed-header.
-
-          APPEND VALUE #( %tky            = header-%tky
-                           %state_area    = 'VALIDATE_EMAIL'
-                          %msg = new_message_with_text( severity =
-                                  if_abap_behv_message=>severity-error
-                                  text = 'Campo Email Obligatorio '
-                                  )
-                        ) TO reported-header.
+        APPEND VALUE #( %tky = header-%tky
+                  %element-Country = if_abap_behv=>mk-on
+                  %state_area = 'VALIDATE_EMAIL'
+                  %msg =  new_message(
+                           id       = 'E'
+                           number   = 004
+                           severity = if_abap_behv_message=>severity-error
+                           v1       = 'EMAIL Obligatorio '
+                         ) )
+         TO reported-header.
 
         ENDIF.
 
@@ -288,21 +298,53 @@ CLASS lhc_Header IMPLEMENTATION.
      RESULT DATA(headers).
 
     DATA(header) = VALUE #( headers[ 1 ] OPTIONAL ).
-
+    APPEND VALUE #(  %tky               = header-%tky
+                     %state_area        = 'VALIDATE_FIRSTNAME'
+                  ) TO reported-header.
     IF header-FirstName IS  INITIAL.
+      APPEND VALUE #( %tky          = header-%tky ) TO failed-header.
 
-          APPEND VALUE #( %tky          = header-%tky ) TO failed-header.
-
-          APPEND VALUE #( %tky            = header-%tky
-                           %state_area    = 'VALIDATE_FIRSTNAME'
-                          %msg = new_message_with_text( severity =
-                                  if_abap_behv_message=>severity-error
-                                  text = 'Campo First Name Obligatorio '
-                                  )
-                        ) TO reported-header.
-
+      APPEND VALUE #( %tky = header-%tky
+                %element-FirstName = if_abap_behv=>mk-on
+                %state_area = 'VALIDATE_FIRSTNAME'
+                %msg =  new_message(
+                         id       = 'E'
+                         number   = 001
+                         severity = if_abap_behv_message=>severity-error
+                         v1       = 'First Name Obligatorio'
+                       ) )
+       TO reported-header.
     ENDIF.
 
+  ENDMETHOD.
+
+  METHOD validatelastName.
+
+    READ ENTITIES OF zheader_r_1457 IN LOCAL MODE
+     ENTITY Header
+     FIELDS ( LastName )
+     WITH CORRESPONDING #( keys )
+     RESULT DATA(headers).
+
+    DATA(header) = VALUE #( headers[ 1 ] OPTIONAL ).
+    APPEND VALUE #(  %tky               = header-%tky
+                     %state_area        = 'VALIDATE_LASTNAME'
+                  ) TO reported-header.
+    IF header-LastName IS  INITIAL.
+
+      APPEND VALUE #( %tky          = header-%tky ) TO failed-header.
+      APPEND VALUE #( %tky = header-%tky
+                %element-LastName = if_abap_behv=>mk-on
+                %state_area = 'VALIDATE_LASTNAME'
+                %msg =  new_message(
+                         id       = 'E'
+                         number   = 002
+                         severity = if_abap_behv_message=>severity-error
+                         v1       = 'Last Name Obligatorio'
+                       ) )
+       TO reported-header.
+
+    ENDIF.
 
   ENDMETHOD.
 

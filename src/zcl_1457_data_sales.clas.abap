@@ -22,17 +22,17 @@ CLASS zcl_1457_data_sales IMPLEMENTATION.
     DATA(fecha) = cl_abap_context_info=>get_system_date(   ).
     lt_header_1457 = VALUE #(
         ( id = '0000000001' email  = 'joel@example.com' first_name = 'Joel' last_name = 'Medina' country  = 'MX'
-          create_on  = '20240228' delivery_date = '20240310' order_status = '1' image_url  = 'Joel'
+          create_on  = '20240228' delivery_date = '20240310' order_status = '1' image_url  = ''
           local_created_by = cl_abap_context_info=>get_user_technical_name(  )
           system_date = cl_abap_context_info=>get_system_date(   )
            )
         ( id = '0000000002' email  = 'juan@example.com' first_name = 'Juan' last_name = 'Molina' country  = 'MX'
-          create_on  = '20240228' delivery_date = '20240310' order_status = '1' image_url  = 'Juan'
+          create_on  = '20240228' delivery_date = '20240310' order_status = '1' image_url  = 'https://www.shutterstock.com/shutterstock/photos/2503144911/display_1500/stock-photo-this-is-a-arrow-jpg-2503144911.jpg'
           local_created_by = cl_abap_context_info=>get_user_technical_name(  )
           system_date = cl_abap_context_info=>get_system_date(   )
           )
         ( id = '0000000003' email  = 'ana@example.com' first_name = 'Ana' last_name = 'Sanchez' country  = 'MX'
-          create_on  = '20240228' delivery_date = '20240310' order_status = '1' image_url  = 'Ana'
+          create_on  = '20240228' delivery_date = '20240310' order_status = '1' image_url  = 'https://images.pexels.com/photos/11751212/pexels-photo-11751212.jpeg'
           local_created_by = cl_abap_context_info=>get_user_technical_name(  )
           system_date = cl_abap_context_info=>get_system_date(   )
           )

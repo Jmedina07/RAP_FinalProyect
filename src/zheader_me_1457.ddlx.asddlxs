@@ -3,6 +3,7 @@
 @UI: { headerInfo: {
     typeName: 'Header',
     typeNamePlural: 'Headers',
+    imageUrl: 'ImageUrl',
     title: {
         type: #STANDARD,
         label: 'Header',
@@ -31,7 +32,7 @@ annotate entity ZHEADER_C_1457 with
                 targetElement: '_Items'  }
              ]
   @UI: {
-      lineItem        : [{ position: 1, importance: #HIGH }],
+//      lineItem        : [{ position: 1, importance: #HIGH }],
       identification  : [{ position: 1, label: 'Order ID' }]}             
   Id;
     @UI: { lineItem: [{ position: 10, importance: #HIGH },
